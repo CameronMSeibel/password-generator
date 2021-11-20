@@ -16,6 +16,10 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+/**
+ * Generates a customizable random string.
+ * @returns {string} password of length between 8 and 128 random characters.
+ */
 function generatePassword() {
   var pwdLength = prompt("How long will this password be? Please input a number between 8 to 128.");
   while(pwdLength < 8 || pwdLength > 128){
@@ -46,6 +50,14 @@ function generatePassword() {
   return password;
 }
 
+/**
+ * Prompts webpage user for password character-type criteria.
+ * @returns {Object} criteria containing a set of character-type criteria for the random password.
+ * @returns {boolean} criteria.lowercase true if password can contain lower-case alphabetic characters.
+ * @returns {boolean} criteria.uppercase true if password can contain upper-case alphabetic characters.
+ * @returns {boolean} criteria.numbers true if password can contain numeric characters.
+ * @returns {boolean} criteria.special true if password can contain special characters.
+ */
 function promptPasswordCriteria(){
   var criteria = {lowercase: false, uppercase: false, numbers: false, special: false};
   criteria.lowercase = confirm("Can this password contain lowercase letters?");
@@ -55,6 +67,14 @@ function promptPasswordCriteria(){
   return criteria;
 }
 
+/**
+ * Returns a random value from an array.
+ * @param {Array} list containing one or more value(s).
+ * @returns {(*|null)} a random value from {@link list}, or null if {@link list} is empty.
+ */
 function pickRand(list){
-  return list[Math.floor(Math.random() * list.length)];
+ if(list.length > 0){
+   return list[Math.floor(Math.random() * list.length)];
+ }
+ return null;
 }
